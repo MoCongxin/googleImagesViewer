@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  
+  "background": {
+    "scripts": ["scripts/background.js"],
+    "persistent": false
+  },
+
+  "name": "谷歌图片预览",
+  "description": "在谷歌图像搜索中添加大图预览按钮",
+  "version": "0.0.1",
+
+  "page_action": {
+    "default_icon": "images/icon.png",
+    "default_title": "谷歌图片预览"
+  },
+  
+  "icons": {
+      "48": "images/icon-38.png"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*tbm=isch*"],
+      "run_at": "document_idle",
+      "js": ["scripts/previewer.js"]
+    }
+   ],
+  
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "webNavigation",
+    "*://*.google.com/*tbm=isch*"
+  ]
+}
